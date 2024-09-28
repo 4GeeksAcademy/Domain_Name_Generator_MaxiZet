@@ -7,10 +7,10 @@ import "./style.css";
 // import { start } from "@popperjs/core";
 
 window.onload = function() {
-  let starts = ["the", "our"];
-  let mids = ["great", "big"];
-  let ends = ["jogger", "racoon"];
-  let dominios = [".es", ".uy", ".ve", ".br", ".ar"];
+  let starts = ["el", "tu"];
+  let mids = ["mejor", "gran"];
+  let ends = ["lugar", "emoticom"];
+  let dominios = ["es", "uy", "ve", "ar", "com"];
 
   let dominiosNames = [];
 
@@ -18,9 +18,17 @@ window.onload = function() {
     mids.forEach(mid => {
       ends.forEach(end => {
         dominios.forEach(dominio => {
-          let domain = `${start}${mid}${end}${dominio}`;
+          let domain = `${start}${mid}${end}.${dominio}`;
           console.log(domain);
-          dominiosNames.push(domain);
+          if (end.endsWith(dominio)) {
+            let domainHack = `${start}${mid}${end.slice(
+              0,
+              -dominio.length
+            )}.${dominio}`;
+            dominiosNames.push(domainHack);
+          } else {
+            dominiosNames.push(domain);
+          }
         });
       });
     });
